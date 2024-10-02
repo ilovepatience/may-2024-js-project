@@ -1,0 +1,25 @@
+.postDetails {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid ;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+
+}
+
+.CommentsText {
+    margin: 20px;
+}
+
+.commentBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.comment {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+}
