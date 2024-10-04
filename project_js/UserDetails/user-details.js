@@ -6,39 +6,81 @@ if (buttonInfo) {
     let userDiv = document.createElement('div');
     userDiv.classList.add('userInfo');
 
-    userDiv.innerHTML = `
-      <p><strong>ID:</strong> ${buttonInfo.id}</p>
-      <p><strong>Name:</strong> ${buttonInfo.name}</p>
-      <p><strong>Username:</strong> ${buttonInfo.username}</p>
-      <p><strong>Email:</strong> ${buttonInfo.email}</p>
-      <p><strong>Phone:</strong> ${buttonInfo.phone}</p>
-      <p><strong>Website:</strong> ${buttonInfo.website}</p>
-    `;
+    let idParagraph = document.createElement('p');
+    idParagraph.appendChild(document.createElement('strong')).textContent = 'ID:';
+    idParagraph.appendChild(document.createTextNode(` ${buttonInfo.id}`));
 
+    let nameParagraph = document.createElement('p');
+    nameParagraph.appendChild(document.createElement('strong')).textContent = 'Name:';
+    nameParagraph.appendChild(document.createTextNode(` ${buttonInfo.name}`));
 
-    let address = document.createElement("div");
-    address.innerHTML = `
-      <h4>Address:</h4>
-      <p> - Street: ${buttonInfo.address.street}</p>
-      <p> - Suite: ${buttonInfo.address.suite}</p>
-      <p> - City: ${buttonInfo.address.city}</p>
-      <p> - Zipcode: ${buttonInfo.address.zipcode}</p>
-      <p> - Geo: lat ${buttonInfo.address.geo.lat}, lng ${buttonInfo.address.geo.lng}</p>
-    `;
+    let usernameParagraph = document.createElement('p');
+    usernameParagraph.appendChild(document.createElement('strong')).textContent = 'Username:';
+    usernameParagraph.appendChild(document.createTextNode(` ${buttonInfo.username}`));
 
-    let company = document.createElement("div");
-    company.innerHTML = `
-      <h4>Company:</h4>
-      <p> - Name: ${buttonInfo.company.name}</p>
-      <p> - CatchPhrase: ${buttonInfo.company.catchPhrase}</p>
-      <p> - BS: ${buttonInfo.company.bs}</p>
-    `;
+    let emailParagraph = document.createElement('p');
+    emailParagraph.appendChild(document.createElement('strong')).textContent = 'Email:';
+    emailParagraph.appendChild(document.createTextNode(` ${buttonInfo.email}`));
 
-    userDiv.appendChild(address);
-    userDiv.appendChild(company);
+    let phoneParagraph = document.createElement('p');
+    phoneParagraph.appendChild(document.createElement('strong')).textContent = 'Phone:';
+    phoneParagraph.appendChild(document.createTextNode(` ${buttonInfo.phone}`));
+
+    let websiteParagraph = document.createElement('p');
+    websiteParagraph.appendChild(document.createElement('strong')).textContent = 'Website:';
+    websiteParagraph.appendChild(document.createTextNode(` ${buttonInfo.website}`));
+
+    userDiv.appendChild(idParagraph);
+    userDiv.appendChild(nameParagraph);
+    userDiv.appendChild(usernameParagraph);
+    userDiv.appendChild(emailParagraph);
+    userDiv.appendChild(phoneParagraph);
+    userDiv.appendChild(websiteParagraph);
+
+    let addressDiv = document.createElement("div");
+    let addressHeader = document.createElement("h4");
+    addressHeader.textContent = 'Address:';
+    addressDiv.appendChild(addressHeader);
+
+    let streetParagraph = document.createElement('p');
+    streetParagraph.textContent = ` - Street: ${buttonInfo.address.street}`;
+    let suiteParagraph = document.createElement('p');
+    suiteParagraph.textContent = ` - Suite: ${buttonInfo.address.suite}`;
+    let cityParagraph = document.createElement('p');
+    cityParagraph.textContent = ` - City: ${buttonInfo.address.city}`;
+    let zipcodeParagraph = document.createElement('p');
+    zipcodeParagraph.textContent = ` - Zipcode: ${buttonInfo.address.zipcode}`;
+    let geoParagraph = document.createElement('p');
+    geoParagraph.textContent = ` - Geo: lat ${buttonInfo.address.geo.lat}, lng ${buttonInfo.address.geo.lng}`;
+
+    addressDiv.appendChild(streetParagraph);
+    addressDiv.appendChild(suiteParagraph);
+    addressDiv.appendChild(cityParagraph);
+    addressDiv.appendChild(zipcodeParagraph);
+    addressDiv.appendChild(geoParagraph);
+
+    userDiv.appendChild(addressDiv);
+
+    let companyDiv = document.createElement("div");
+    let companyHeader = document.createElement("h4");
+    companyHeader.textContent = 'Company:';
+    companyDiv.appendChild(companyHeader);
+
+    let companyNameParagraph = document.createElement('p');
+    companyNameParagraph.textContent = ` - Name: ${buttonInfo.company.name}`;
+    let catchPhraseParagraph = document.createElement('p');
+    catchPhraseParagraph.textContent = ` - CatchPhrase: ${buttonInfo.company.catchPhrase}`;
+    let bsParagraph = document.createElement('p');
+    bsParagraph.textContent = ` - BS: ${buttonInfo.company.bs}`;
+
+    companyDiv.appendChild(companyNameParagraph);
+    companyDiv.appendChild(catchPhraseParagraph);
+    companyDiv.appendChild(bsParagraph);
+
+    userDiv.appendChild(companyDiv);
 
     let buttonPosts = document.createElement("button");
-    buttonPosts.textContent = `Posts of current user`;
+    buttonPosts.textContent = 'Posts of current user';
     buttonPosts.classList.add('buttonInfoOpener');
 
     buttonPosts.onclick = async function () {
@@ -57,15 +99,15 @@ if (buttonInfo) {
                 postDiv.classList.add('singlePostInfo');
 
                 let titles = document.createElement('div');
-                titles.textContent = `${item.title}`;
+                titles.textContent = item.title;
                 postDiv.appendChild(titles);
 
                 let buttonTransfer = document.createElement("button");
-                buttonTransfer.textContent = `More info about this post`;
+                buttonTransfer.textContent = 'More info about this post';
 
                 buttonTransfer.onclick = function () {
                     localStorage.setItem('selectedPost', JSON.stringify(item));
-                    document.location.href = 'post-details.html';
+                    document.location.href = '/may-2024-js-project/project_js/PostDetails/post-details.html';
                 };
 
                 postDiv.appendChild(buttonTransfer);

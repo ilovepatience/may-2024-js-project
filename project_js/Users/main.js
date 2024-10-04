@@ -12,22 +12,26 @@ fetch('https://jsonplaceholder.typicode.com/users')
             let div = document.createElement('div');
             div.classList.add('blockOfUser');
 
-            div.innerHTML = `
-                <p><strong>User ID :</strong> ${user.id}</p>
-                <p><strong>Name :</strong> ${user.name}</p>
-            `;
+            let userIdParagraph = document.createElement('p');
+            userIdParagraph.innerHTML = `<strong>User ID :</strong> ${user.id}`;
+
+            let userNameParagraph = document.createElement('p');
+            userNameParagraph.innerHTML = `<strong>Name :</strong> ${user.name}`;
+
+            div.appendChild(userIdParagraph);
+            div.appendChild(userNameParagraph);
 
             button.textContent = `More info about this user`;
-
             div.appendChild(button);
             generalDiv.appendChild(div);
 
             button.onclick = function () {
                 localStorage.setItem('user', JSON.stringify(user));
-                document.location.href = 'user-details.html';
+                document.location.href = '/may-2024-js-project/project_js/UserDetails/user-details.html';
             };
         });
 
         blockOfUsers.appendChild(generalDiv);
     });
+
 
